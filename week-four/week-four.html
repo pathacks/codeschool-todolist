@@ -1,0 +1,70 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Week Four Homework</h1>
+        <!-- This app allows you to add a list of countries that you would like to visit, and check them off when you've visited them -->
+        <h2>Travel wishlist</h2>
+        <input id="countryInput"></input>
+        <ul id="countries"></ul>
+
+        <script>
+            const listOfCountries = [];
+            document.getElementById('countryInput').addEventListener('keydown', (event) => {
+                // When enter is pressed on the input#countryInput 
+                if (event.key === 'Enter') {
+                    // Q1: Create an input element with type="checkbox" using document.createElement
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
+                    const checkbox = document.createElement('input');
+                    checkbox.setAttribute('type', 'checkbox');
+                    // Q2: Create a new li element 
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+                    const li = document.createElement('li');
+                    // Q3: appendChild the input element into the li element
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
+                    li.appendChild(checkbox);
+                    // Q4: create a new span element for the text and set its textContent to the value of the input box
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
+                    const span = document.createElement('span');
+                    span.textContent = event.target.value;
+                    // Q5: appendChild the span element into the li element
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
+                    li.appendChild(span);
+                    // Q6: appendChild the li element to the ul#countries
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
+                    document.getElementById('countries').appendChild(li);
+                    // Q7: Add an eventListener to the input so that it adds a class "visited" to the li when it gets checked, and removes it when it gets unchecked
+                    // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+                    checkbox.addEventListener('change',(event) => {
+                    if (event.target.checked) {
+                    li.classList.add('visited');
+                    } else {
+                    li.classList.remove('visited');
+                    }
+                    });
+                    // Q8: Clear the input box value
+                    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefvalue
+                    document.getElementById('countryInput').value = '';
+                }
+            });
+
+
+        </script>
+
+        <style>
+            li {
+                list-style-type: none;
+            }
+
+            li.visited {
+                /* Q9: Add a style that makes the text green and bold */
+                color: green;
+                font-weight: bold;
+                
+            }
+        </style>
+    </body>
+</html>

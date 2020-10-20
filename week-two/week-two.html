@@ -1,0 +1,64 @@
+<html>
+    <head></head>
+    <body>
+        <h1>Week Two Homework</h1>
+        <h2>Whos the odd one out?</h2>
+        <div id="taskOne"></div>
+        <h2>Welcome class:</h2>
+        <ul id="taskTwo"></ul>
+        <h2>And then:</h2>
+        <div id="taskThree"></div>
+        <button id="removeKaren">No Karens!</button>
+        <input id="enterName"></input>
+        <script>
+            var names = [
+                "Daniel",
+                "Barry",
+                "Kieran",
+                "Jack",
+                "John",
+                "Karen"
+            ];
+
+            // Q1. Use names.find to loop through the list of names, and render the result Karen to the div (innerHTML) with the id "taskOne" (div#taskOne)
+            var oddOne = () => {
+            var oddOneOut = names.find(item => item.includes('Karen'));
+            document.querySelector('#taskOne').innerHTML = oddOneOut;   
+            }
+            oddOne();
+            // Q2. Use names.forEach to loop through the list of names, and render each of the names in an <li> to ul#taskTwo (innerHTML)
+                var forEachLoop = () => {
+                names.forEach(item => {
+                document.querySelector('#taskTwo').innerHTML += '<li>'+item+'</li>';
+                })
+            }
+            forEachLoop();
+            // Q3. Use names.join to render each name separated by the text "and then" to div#taskThree (innerHTML)
+            var joinNames = () => {
+                document.querySelector('#taskThree').innerHTML = names.join(' and then ');
+            }
+            joinNames();
+            // Q4. Add an onclick handler to the button with the id "removeKaren" that will remove the name Karen from ul#taskTwo when the button is clicked
+        var removeName = () => {
+        document.querySelector('#taskTwo').innerHTML = document.querySelector('#taskTwo').innerHTML.replace('<li>Karen</li>','');
+        }
+        document.querySelector('#removeKaren').addEventListener('click', removeName)
+
+            // Q5. Add an input with an id "enterName" 
+            
+            // Q6. Add an enter key listener to "enterName" that adds the input value to the ul#taskTwo when enter is pressed
+            var keyEnter = (e) => {
+            if (e.key == 'Enter') {
+            addName()
+        }
+    }
+            var addName =() => {
+                var newName = document.querySelector('#enterName').value;
+                names.push(newName);
+                document.querySelector('#taskTwo').innerHTML += '<li>'+newName+'</li>';
+                document.querySelector('#enterName').value = '';
+            }
+            document.querySelector('input').addEventListener('keydown', keyEnter)
+        </script>
+    </body>
+</html>

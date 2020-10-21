@@ -1,0 +1,131 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Week Five Homework</h1>
+        <!-- This app allows you to add a list of countries that you would like to visit, and check them off when you've visited them -->
+        <h2>Travel wishlist</h2>
+        I want to visit 
+        <div class = "autocomplete"> 
+            <input id="countryInput"></input>
+            <!-- Q0. Add an empty ul#suggestions -->
+            <ul id="suggestions"></ul>
+        </div>
+        <ul id="countries"></ul>
+
+        <script>
+            const listOfCountries = [];
+            document.getElementById('countryInput').addEventListener('input', (event) => {
+                // Q1. Create an if statement that checks that the value of input#countryInput is at least three characters long
+                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else
+                // https://www.w3schools.com/jsref/prop_text_value.asp
+                // https://www.w3schools.com/JSREF/jsref_length_string.asp
+
+                var cInput = document.getElementById('countryInput').value
+                if (cInput.length >= 3) {
+                    
+                    fetch(`https://restcountries.eu/rest/v2/name/${cInput}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('suggestions').innerHTML = "";
+                            data.forEach(country => {
+                                if (country.name.toLowerCase().indexOf(cInput.toLowerCase()) === -1) {
+                                    return;
+                                };  
+                                    const li = document.createElement('li');
+                                    li.textContent = country.name;
+                                    const ul = document.getElementById('suggestions');
+                                    ul.appendChild(li);
+                            });
+                        });
+                };
+
+                    // Q2. Use fetch to call https://restcountries.eu/rest/v2/name/{name} where name is the value of input#countryInput
+                    // then resolve the fetch promise with .then(). It has one argument 'response'. call response.json()
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
+                        // Q3. Resolve the json() promise with .then(). It has one argument 'data', which will be an array of countries
+                        // Call data.forEach to loop through each country that was returned from the API
+                        // https://developer.mozilla.org/en-US/docs/Web/API/Body/json
+                        //  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+
+                                // Q4. In each loop, set the innerHTML of ul#suggestions to an empty string (to clear the old suggestions)
+                                // https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById
+                                // https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
+
+                                // Q5. Check if the country.name contains the value of the input#countryInput, if it doesn't, return;
+                                // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf
+
+                                // Q6. Create a li element using document.createElement
+                                // https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+
+                                // Q7. Set textContent of the li to country.name
+                                // https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
+
+                                // Q8. Append the li to ul#suggestions
+                                // https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
+
+                // When enter is pressed on the input#countryInput
+                if (event.key === 'Enter') {
+                    const checkbox = document.createElement('input');
+                    checkbox.setAttribute('type', 'checkbox');
+
+                    const li = document.createElement('li')
+                    li.appendChild(checkbox);
+
+                    const span = document.createElement('span');
+                    span.textContent = event.target.value;
+
+                    li.appendChild(span);
+
+                    document.getElementById('countries').appendChild(li);
+
+                    checkbox.addEventListener('change', (event) => {
+                        if (event.target.checked) {
+                            li.classList.add('visited');
+                        } else {
+                            li.classList.remove('visited');
+                        }
+                    });
+
+                    event.target.value = '';
+                }
+            });
+
+
+        </script>
+
+        <style>
+            li {
+                list-style-type: none;
+            }
+
+            li.visited {
+                /* Q9: Add a style that makes the text green and bold */
+                color: green;
+                font-weight: bold;
+            }
+
+            .autocomplete {
+                position: relative;
+                width: 200px;
+            }
+
+            #countryInput {
+                width: 100%;
+            }
+
+            #suggestions {
+                box-sizing: border-box;
+                background: white;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                list-style: none;
+                margin-top: 20px;
+                padding-left: 10px;
+                border: 1px solid grey;
+            }
+
+        </style>
+    </body>

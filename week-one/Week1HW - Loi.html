@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <style>
+            /* CSS Q1: Make all text on the page have a font size of 32px */
+            * {
+                font-size: 32px;
+            }
+            /* CSS Q2: Make the div with id="taskOne" have a background of #E3E3E3  */
+            
+            #taskOne {
+                background-color: #E3E3E3;
+                padding: 20px;
+                margin: 20px;
+            }
+
+            /* CSS Q3: Make the div with id="taskTwo" have a margin top and bottom of 30px */
+
+            #taskTwo {
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+
+            #links {
+                padding: 20px
+            }
+
+            #btnDiv {
+                padding: 20px
+            }
+
+        </style>
+    </head>
+    <body>
+        <!-- HTML Q1: Create a H1 below, that has text content "Week One: Homework" -->
+
+        <h1>Week One: Homework</h1>
+
+        <!-- HTML Q2: Create a button that has the text "Click me" inside it -->
+
+        <div id="btnDiv">
+            <button id="clickMe">Click me</button>
+        </div>
+
+        <!-- HTML Q3: Create a link to https://www.ozbargain.com and the text "Shop now" -->
+
+        <div id="links">
+            <a href="https://www.ozbargain.com">Shop now</a>
+        </div>
+
+        <div id="taskOne"></div>
+        <div id="taskTwo"></div>
+        <div id="taskThree"></div>
+        
+        <script>
+            // JS Q1: Create and call a function called "sayHi" that inserts the text "Hello world" into the div with id="taskOne"
+
+            const sayHi = () => {
+                document.getElementById('taskOne').innerHTML = 'Hello World';
+            }
+            sayHi();
+            
+            // JS Q2: Create and call a function called "over9000" that takes an input parameter "value"
+
+            const over9000 = (value) => {
+                if (value > 9000) {
+                    document.querySelector('#taskTwo').innerHTML = "true";
+                } else {document.querySelector('#taskTwo').innerHTML = "false";
+                }
+            }
+            console.log(over9000(9999)); //why does this return undefined in the console?
+
+            // It should insert the text "true" into the div with id="taskTwo" if value is greater than 9000
+            // It should insert the text "false" into the div with id="taskTwo" if value is less than or equal to 9000
+
+            // JS Q3: Create and call a function called "getCardinal" that takes an input parameter "orientation"
+
+            const getCardinal = (orientation) => {
+                if (orientation == 0) {
+                    document.querySelector('#taskThree').innerHTML = "N";
+                } else if (orientation > 0 && orientation < 90) {
+                    document.querySelector('#taskThree').innerHTML = "NE";
+                } else if (orientation == 90) {
+                    document.querySelector('#taskThree').innerHTML = "E";
+                } else if (orientation > 90 && orientation < 180) {
+                    document.querySelector('#taskThree').innerHTML = "SE";
+                } else if (orientation == 180) {
+                    document.querySelector('#taskThree').innerHTML = "S";
+                } else if (orientation > 180 && orientation < 270) {
+                    document.querySelector('#taskThree').innerHTML = "SW";
+                } else if (orientation == 270) {
+                    document.querySelector('#taskThree').innerHTML = "W";
+                } else if (orientation > 270 && orientation < 360) {
+                    document.querySelector('#taskThree').innerHTML = "NW";
+                }
+            }
+            getCardinal(50);
+
+            // it should insert the text "N" into the div with id="taskThree" if orientation is 0
+            // it should insert the text "NE" into the div with id="taskThree" if orientation is greater than 0 but less than 90
+            // it should insert the text "E" into the div with id="taskThree" if orientation is 90
+            // it should insert the text "SE" into the div with id="taskThree" if orientation is greater than 90 but less than 180
+            // it should insert the text "S" into the div with id="taskThree" if orientation is 180
+            // it should insert the text "SW" into the div with id="taskThree" if orientation is greater than 180 but less than 270
+            // it should insert the text "W" into the div with id="taskThree" if orientation is 270 
+            // it should insert the text "NW" into the div with id="taskThree" if orientation is greater than 270 but less than 360
+
+        </script>
+    </body>
+</html>
+
+<!-- "/*" These comments can be multi-line "*/" -->
+<!-- "//" These comments end at the end of the line -->
+<!-- These comments can be multi-line and are used in HTML -->
+

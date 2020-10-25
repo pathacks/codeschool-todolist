@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <style>
+            /* Add style for strikethrough (refer to Q2) here */
+        </style>
+    </head>
+    <body>
+        <h1>Week Three Homework</h1>
+        <ul id="insertListHere"></ul>
+        <div id="goneShopping">
+            <input id="shoppingCheckbox" type="checkbox"><span id="haveYouGoneShoppingYet">Gone shoppin'?</span>
+        </div>
+        <section id="insertDivHere"></section>
+        <script>
+            // Q1: Use forEach to loop through this shopping list and insert each as a li into innerHtml of the ul with id insertListHere (ul#insertListHere)
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+            // https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
+            const shoppingList = [
+                "Frozen Pizza",
+                "Onions",
+                "Lettuce",
+                "Ground beef",
+                "Milk",
+                "Mayo"
+            ];
+
+            // Q2: Add an event listener to input#shoppingCheckbox that will add a strikethrough style to the div#goneShopping when it is checked, and remove it when it is unchecked
+            // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+            // https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration 
+
+            // Q3: Use document.createElement to create a div with an id of myFavouriteDiv and className of divsAreCool. Set textContent as your favourite food
+            // https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+            // https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute 
+            // https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
+
+
+            // Q4: Use section.appendChild to add the div you created in Q3 to section#insertDivHere
+            // https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
+            const section = document.getElementById("insertDivHere");
+
+
+            
+        </script>
+    </body>
+</html>
